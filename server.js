@@ -8,7 +8,7 @@ const PORT = 5000;
 const DATA_FILE = path.join(__dirname, 'submissions.json');
 
 //Middleware 
-app.use(cors());                        // allow requests from your HTML page
+app.use(cors());                        // allow requests from HTML page
 app.use(express.json());                // parse JSON request bodies
 app.use(express.static(path.join(__dirname, '..')));     // serve index.html from the same folder
 
