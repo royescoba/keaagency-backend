@@ -7,12 +7,12 @@ const app = express();
 const PORT = 5000;
 const DATA_FILE = path.join(__dirname, 'submissions.json');
 
-// ── Middleware ──────────────────────────────────────────────
+//Middleware 
 app.use(cors());                        // allow requests from your HTML page
 app.use(express.json());                // parse JSON request bodies
 app.use(express.static(path.join(__dirname, '..')));     // serve index.html from the same folder
 
-// ── Helpers ─────────────────────────────────────────────────
+//Helpers
 function loadSubmissions() {
   if (!fs.existsSync(DATA_FILE)) return [];
   try {
@@ -26,7 +26,7 @@ function saveSubmissions(data) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
-// ── Routes ───────────────────────────────────────────────────
+//Routes
 
 // POST /api/apply — receive a new application
 app.post('/api/apply', (req, res) => {
@@ -62,7 +62,7 @@ app.get('/api/submissions', (req, res) => {
   res.json(loadSubmissions());
 });
 
-// ── Start ────────────────────────────────────────────────────
+//Start
 app.listen(PORT, () => {
   console.log(`\n🚀 KeaAgency backend running at http://localhost:${PORT}`);
   console.log(`📋 View submissions at http://localhost:${PORT}/api/submissions`);
